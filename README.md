@@ -1,16 +1,44 @@
-# React + Vite
+# vgp. | Valentín Garcia Pintos — Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A super-minimalist, responsive, and high-performance personal portfolio website built with **React** and **Vite**. 
 
-Currently, two official plugins are available:
+This portfolio is designed to showcase software engineering projects, technical expertise, and core skills under a clean light-grey (`#e5e5e5`) aesthetic with elegant typography.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Frontend:** React (JavaScript)
+* **Build Tool:** Vite
+* **Styling:** Vanilla CSS (custom properties/variables, responsive flexbox & grids)
+* **Icons:** Lucide React (lightweight SVG icons)
+* **Favicon:** Custom hand-drawn minimalist line-art laptop SVG
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+* **Default Landing View:** Focuses directly on projects (**Work**) to hook visitors immediately.
+* **Component-Based Navigation:** Smooth tab switching between **Work**, **About**, and **Contact** views.
+* **Interactive Projects Grid:** Detailed cards for software projects showcasing:
+  * Short description & tagline.
+  * Bulleted key feature lists.
+  * Tech stack tags.
+  * Core skills demonstrated.
+  * Direct source code action links.
+* **Refined "About" Profile:** Detailed systems engineering background, technical tool list, core skills, and email call-to-actions.
+* **Minimalist Contact Form:** Styled with bottom-only borders, input focus animations, client-side validation, and simulated submission feedback.
+* **Clean Codebase:** Completely pruned of default boilerplate assets and unused template SVGs.
+
+---
+
+## 📁 Component Architecture
+
+The project is structured modularly:
+* `src/components/Header.jsx` — Logo signature (`vgp.`) and active view links.
+* `src/components/WorkView.jsx` — Landing page with project showcases.
+* `src/components/AboutView.jsx` — Biography, profile picture container, and skills/tools grids.
+* `src/components/ContactForm.jsx` — Contact form inputs and Location details.
+* `src/components/Footer.jsx` — Copyright watermark and active social links (GitHub & LinkedIn).
+* `src/index.css` — Global styling rules and CSS variables.
+
