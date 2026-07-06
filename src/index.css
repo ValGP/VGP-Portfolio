@@ -7,9 +7,26 @@
   --accent-color: #aa3bff;     /* purple accent */
   --accent-secondary: #aa3bff;
   
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --item-hover-bg: rgba(0, 0, 0, 0.04);
+  --tag-bg: rgba(0, 0, 0, 0.05);
+  
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --max-width: 1100px;
+}
+
+html.dark {
+  --bg-color: #121212;         /* dark carbon grey background */
+  --text-primary: #f0f0f0;     /* bright white text */
+  --text-secondary: #a098aa;   /* muted violet-grey text */
+  --border-color: #333333;     /* dark grey borders */
+  --accent-color: #c27fff;     /* lighter purple for contrast */
+  --accent-secondary: #c27fff;
+  
+  --hover-bg: rgba(255, 255, 255, 0.08);
+  --item-hover-bg: rgba(255, 255, 255, 0.06);
+  --tag-bg: rgba(255, 255, 255, 0.08);
 }
 * {
   box-sizing: border-box;

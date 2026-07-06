@@ -1,62 +1,45 @@
 import React from "react";
 import heroImg from "../assets/pfp_hero.JPEG";
 import { ArrowRight } from "lucide-react";
+import { translations } from "../data/translations";
 
-export default function AboutView({ setActiveView }) {
+export default function AboutView({ setActiveView, language }) {
+  const t = translations[language].about;
+
   return (
     <section className="about-view container fade-in">
       <div className="hero-grid">
         {/* Left Column: Biography Info */}
         <div className="bio-col">
-          <h1 className="main-title">
-            Hi I’m Valentin Garcia Pintos, Software Developer.
-          </h1>
-          <p className="bio-desc">
-            I'm an advanced Systems Engineering student at UTN Córdoba
-            passionate about software development, systems thinking, and solving
-            real-world problems through technology.
-          </p>
-          <p className="bio-desc">
-            I enjoy working across different areas of software, from backend
-            development and web applications to automation and AI-powered
-            solutions. My focus is on understanding challenges, designing
-            effective solutions, and turning ideas into functional products.
-          </p>
-          <p className="bio-desc">
-            Currently, I'm building personal projects while exploring how
-            emerging technologies and AI are transforming the way software is
-            designed, developed, and delivered.
-          </p>
+          <h1 className="main-title">{t.title}</h1>
+          <p className="bio-desc">{t.bio1}</p>
+          <p className="bio-desc">{t.bio2}</p>
+          <p className="bio-desc">{t.bio3}</p>
 
           {/* Software & Skills lists */}
           <div className="skills-meta">
             <div className="meta-row">
               <div className="meta-label">
-                <span className="underlined-title">Tech & Tools</span>
+                <span className="underlined-title">{t.techTitle}</span>
               </div>
               <div className="meta-value">
                 <p>
-                  <strong>Languages & Frameworks:</strong> Java, Spring Boot,
+                  <strong>{t.langTitle}:</strong> Java, Spring Boot,
                   SQL, PostgreSQL, JPA / Hibernate, REST APIs, React,
                   JavaScript, HTML, CSS.
                 </p>
                 <p className="second-line">
-                  <strong>Tools:</strong> Git, Maven, Postman, Jira.
+                  <strong>{t.toolsTitle}:</strong> Git, Maven, Postman, Jira.
                 </p>
               </div>
             </div>
 
             <div className="meta-row">
               <div className="meta-label">
-                <span className="underlined-title">Core Skills</span>
+                <span className="underlined-title">{t.skillsTitle}</span>
               </div>
               <div className="meta-value">
-                <p>
-                  Software Development, Backend Engineering, Problem Solving,
-                  System Design, REST API Development, Database Modeling,
-                  Business Process Analysis, Technical Documentation, Testing &
-                  Debugging, Continuous Learning.
-                </p>
+                <p>{t.skillsValue}</p>
               </div>
             </div>
           </div>
@@ -67,7 +50,7 @@ export default function AboutView({ setActiveView }) {
           <div className="vertical-photoimg shadow-effect">
             <img
               src={heroImg}
-              alt="Valentin Garcia Pintos walking in the fog"
+              alt="Valentin Garcia Pintos"
             />
           </div>
         </div>
@@ -81,9 +64,9 @@ export default function AboutView({ setActiveView }) {
           <h2
             className="action-heading"
             onClick={() => setActiveView("contact")}
-            style={{ cursor: "pointer" }}
+            style={{ cursor: 'pointer' }}
           >
-            I am thrilled to answer to your next project{" "}
+            {t.cta}{" "}
             <ArrowRight className="inline-arrow" size={24} />
           </h2>
         </div>
@@ -94,8 +77,8 @@ export default function AboutView({ setActiveView }) {
           >
             valgpintos@gmail.com
           </a>
-          <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">
-            View Resume
+          <a href={t.cvPath} target="_blank" rel="noopener noreferrer" className="resume-link">
+            {t.viewResume}
           </a>
         </div>
       </div>

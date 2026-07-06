@@ -3,84 +3,23 @@ import expenseTrackerImg from "../assets/project_expense_tracker.png";
 import appointmentSystemImg from "../assets/project_appointment_system.png";
 import projectWipImg from "../assets/project_wip.png";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { translations } from "../data/translations";
 
-export default function WorkView() {
-  const projects = [
-    {
-      id: '01',
-      name: 'Expense Tracker',
-      tagline: 'Personal Finance Management Platform',
-      desc: 'A personal finance management platform designed to help users track expenses, manage accounts, categorize transactions, and monitor their financial activity through a secure and scalable backend architecture.',
-      technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'JPA/Hibernate', 'JWT', 'REST APIs', 'Maven', 'Git'],
-      features: [
-        'User authentication and authorization with JWT',
-        'Account and balance management',
-        'Expense and income tracking',
-        'Transaction categorization and tagging',
-        'Ownership-based access control',
-        'RESTful API architecture',
-        'Data validation and exception handling',
-        'Relational database integration'
-      ],
-      skills: 'Backend Development, API Design, Database Modeling, Authentication & Security, Problem Solving, Software Architecture.',
-      linkText: 'Source Code',
-      linkUrl: 'https://github.com/ValGP/Expense-Tracker',
-      liveUrl: 'https://expense-tracker-frontend-iota-nine.vercel.app',
-      img: expenseTrackerImg,
-    },
-    {
-      id: '02',
-      name: 'Appointment Management System',
-      tagline: 'Business Appointment Scheduling Platform',
-      desc: 'A scheduling platform designed for service-based businesses to manage appointments, professionals, services, availability, and customer bookings through a centralized system.',
-      technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'JPA/Hibernate', 'REST APIs', 'React', 'Git'],
-      features: [
-        'Appointment booking and management',
-        'Service and professional administration',
-        'Availability and schedule configuration',
-        'Business hours management',
-        'Appointment status tracking',
-        'Role-based access control',
-        'Conflict prevention and booking validation',
-        'Administrative dashboard'
-      ],
-      skills: 'Business Process Modeling, Backend Development, System Design, Database Design, API Development, Problem Solving.',
-      linkText: 'Source Code',
-      linkUrl: 'https://github.com/ValGP/AppointmentMS-Template',
-      liveUrl: 'https://bibe-estetica-prueba-front.vercel.app/',
-      img: appointmentSystemImg,
-    },
-    {
-      id: '03',
-      name: 'Appointment Booking SaaS',
-      tagline: 'Multi-tenant Business Scheduling & Operations Platform',
-      desc: 'A scalable multi-tenant SaaS scheduling platform designed to allow independent service-based businesses (tenants) to manage bookings, customize service catalogs, and monitor scheduling metrics under a subscription-based model with secure, isolated tenant database architecture.',
-      technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'JPA/Hibernate', 'JWT', 'REST APIs', 'React', 'TypeScript', 'Docker'],
-      features: [
-        'Multi-tenant database isolation: Secure data segregation per business (tenant).',
-        'Centralized customer booking wizard: Fast, multi-step scheduling flow with real-time slot availability checking (focused purely on reservation logistics).',
-        'Flexible configuration per tenant: Customize work schedules, professional rosters, and service catalogs.',
-        'Role-based access control: Granular access management for Admins (business owners), Professionals, and Customers.',
-        'Conflict resolution algorithms: Prevents double-booking and validates overlapping slots against active business hours and custom agenda blocks.',
-        'SaaS subscription management: Tier-based enforcement of tenant-specific operational limits (e.g., maximum active professionals or bookings).',
-        'Operational metrics dashboard: Live tracking of tenant booking volumes, occupancy rates, and peak scheduling hours.'
-      ],
-      skills: 'SaaS Architecture, Database Multi-tenancy, Full-Stack Development, Secure API Design, Conflict Resolution Algorithms, Relational Database Design.',
-      linkText: 'Source Code',
-      linkUrl: 'https://github.com/ValGP',
-      status: 'wip',
-      img: projectWipImg,
-    }
-  ];
+export default function WorkView({ language }) {
+  const t = translations[language].work;
+
+  const projectImages = {
+    '01': expenseTrackerImg,
+    '02': appointmentSystemImg,
+    '03': projectWipImg
+  };
 
   return (
     <section className="work-view container fade-in">
       {/* Intro Header */}
       <div className="work-intro">
-        <h1 className="work-intro-title">Hello, I’m Valentin.</h1>
-        <p className="work-intro-subtitle">
-          Systems Engineering Student at UTN Córdoba & Software Developer.
-        </p>
+        <h1 className="work-intro-title">{t.title}</h1>
+        <p className="work-intro-subtitle">{t.subtitle}</p>
       </div>
 
       {/* Downward indicator arrow */}
@@ -90,13 +29,13 @@ export default function WorkView() {
 
       {/* Projects List */}
       <div className="projects-list">
-        {[...projects].reverse().map((project) => (
+        {[...t.projects].reverse().map((project) => (
           <div key={project.id} className="project-item">
             <div className="project-info-col">
               <span className="project-number-title">
                 {project.id} / {project.name.toUpperCase()}
                 {project.status === 'wip' && (
-                  <span className="wip-badge">Currently Building</span>
+                  <span className="wip-badge">{t.currentlyBuilding}</span>
                 )}
               </span>
 
@@ -107,7 +46,7 @@ export default function WorkView() {
 
                 {/* Key Features List */}
                 <div className="project-features-box">
-                  <h4 className="box-title">Key Features</h4>
+                  <h4 className="box-title">{t.keyFeatures}</h4>
                   <ul className="features-list">
                     {project.features.map((feature, fIdx) => (
                       <li key={fIdx} className="feature-item">
@@ -130,7 +69,7 @@ export default function WorkView() {
 
                 {/* Skills demonstrated */}
                 <div className="project-skills-box">
-                  <span className="skills-label">Skills:</span> {project.skills}
+                  <span className="skills-label">{t.skills}:</span> {project.skills}
                 </div>
               </div>
 
@@ -148,7 +87,7 @@ export default function WorkView() {
                 )}
                 {project.status === 'wip' ? (
                   <div className="wip-status">
-                    <span className="pulse-dot"></span> Active Development
+                    <span className="pulse-dot"></span> {t.activeDev}
                   </div>
                 ) : (
                   project.liveUrl && (
@@ -158,7 +97,7 @@ export default function WorkView() {
                       rel="noopener noreferrer"
                       className="project-link btn-underline"
                     >
-                      Live Project{" "}
+                      {t.liveProject}{" "}
                       <ArrowUpRight size={16} className="inline-icon" />
                     </a>
                   )
@@ -168,7 +107,7 @@ export default function WorkView() {
 
             <div className="project-image-col">
               <div className="img-hover-zoom project-card-img">
-                <img src={project.img} alt={project.name} />
+                <img src={projectImages[project.id]} alt={project.name} />
               </div>
             </div>
           </div>
@@ -332,7 +271,7 @@ export default function WorkView() {
         .tech-tag {
           font-size: 11px;
           font-weight: 600;
-          background: rgba(0, 0, 0, 0.05);
+          background: var(--tag-bg);
           color: var(--text-secondary);
           padding: 3px 8px;
           border-radius: 2px;

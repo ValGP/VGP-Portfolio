@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertTriangle } from 'lucide-react';
+import { translations } from '../data/translations';
 
-export default function ContactForm() {
+export default function ContactForm({ language }) {
+  const t = translations[language].contact;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,7 +34,7 @@ export default function ContactForm() {
         submitting: false,
         submitted: true,
         error: false,
-        msg: '¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.'
+        msg: t.alert.success
       });
       setFormData({ name: '', email: '', subject: '', message: '' });
     }, 1500);
@@ -66,9 +69,9 @@ export default function ContactForm() {
   return (
     <section className="contact-form-section container fade-in">
       <div className="contact-header">
-        <h1 className="contact-title">Let’s start a conversation.</h1>
+        <h1 className="contact-title">{t.title}</h1>
         <p className="contact-subtitle">
-          Whether you have a project in mind, want to discuss a partnership, or just say hello, drop me a message.
+          {t.subtitle}
         </p>
       </div>
 
@@ -83,7 +86,7 @@ export default function ContactForm() {
                 onClick={() => setStatus({ submitting: false, submitted: false, error: false, msg: '' })}
                 className="status-btn"
               >
-                Send another message
+                {t.labels.another}
               </button>
             </div>
           ) : (
@@ -91,13 +94,13 @@ export default function ContactForm() {
               {status.error && (
                 <div className="form-status-alert error">
                   <AlertTriangle size={20} />
-                  <p>{status.msg || 'Ha ocurrido un error. Inténtalo de nuevo.'}</p>
+                  <p>{status.msg || t.alert.error}</p>
                 </div>
               )}
 
               <div className="form-group-row">
                 <div className="form-group">
-                  <label htmlFor="name">Your Name</label>
+                  <label htmlFor="name">{t.labels.name}</label>
                   <input
                     type="text"
                     id="name"
@@ -105,13 +108,13 @@ export default function ContactForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    placeholder="e.g., Jane Doe"
+                    placeholder={t.placeholders.name}
                     autoComplete="name"
                   />
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
+                  <label htmlFor="email">{t.labels.email}</label>
                   <input
                     type="email"
                     id="email"
@@ -119,14 +122,14 @@ export default function ContactForm() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    placeholder="e.g., jane@example.com"
+                    placeholder={t.placeholders.email}
                     autoComplete="email"
                   />
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Subject</label>
+                <label htmlFor="subject">{t.labels.subject}</label>
                 <input
                   type="text"
                   id="subject"
@@ -134,12 +137,12 @@ export default function ContactForm() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  placeholder="e.g., Software Project Inquiry"
+                  placeholder={t.placeholders.subject}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">{t.labels.message}</label>
                 <textarea
                   id="message"
                   name="message"
@@ -147,7 +150,7 @@ export default function ContactForm() {
                   onChange={handleChange}
                   required
                   rows="6"
-                  placeholder="Tell me about your project or inquiry..."
+                  placeholder={t.placeholders.message}
                 ></textarea>
               </div>
 
@@ -156,7 +159,7 @@ export default function ContactForm() {
                 className="submit-btn"
                 disabled={status.submitting}
               >
-                {status.submitting ? 'Sending...' : 'Send Message'}
+                {status.submitting ? t.labels.sending : t.labels.submit}
                 <Send size={16} className="send-icon" />
               </button>
             </form>
@@ -166,14 +169,14 @@ export default function ContactForm() {
         {/* Sidebar Info */}
         <div className="info-col">
           <div className="info-block">
-            <h3>Direct Contact</h3>
+            <h3>{t.sidebar.contact}</h3>
             <p><a href="mailto:valgpintos@gmail.com" className="btn-underline">valgpintos@gmail.com</a></p>
           </div>
 
           <div className="info-block">
-            <h3>Location</h3>
-            <p>Córdoba, Argentina</p>
-            <p>Available for remote work and contracts.</p>
+            <h3>{t.sidebar.location}</h3>
+            <p>{t.sidebar.locationValue}</p>
+            <p>{t.sidebar.remote}</p>
           </div>
         </div>
       </div>

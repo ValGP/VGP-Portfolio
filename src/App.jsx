@@ -8,29 +8,47 @@ import './App.css';
 
 function App() {
   const [activeView, setActiveView] = useState('work');
+  const [language, setLanguage] = useState('en');
+  const [theme, setTheme] = useState('light');
 
   // Smooth scroll to top when changing views
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [activeView]);
 
+  // Synchronize theme state with the html class list
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
   return (
     <div className="portfolio-app">
       {/* Navigation Header */}
-      <Header activeView={activeView} setActiveView={setActiveView} />
+      <Header 
+        activeView={activeView} 
+        setActiveView={setActiveView} 
+        language={language}
+        setLanguage={setLanguage}
+        theme={theme}
+        setTheme={setTheme}
+      />
       
       {/* Main Content Area */}
       <main className="main-content">
         {activeView === 'about' && (
-          <AboutView setActiveView={setActiveView} />
+          <AboutView setActiveView={setActiveView} language={language} />
         )}
         
         {activeView === 'work' && (
-          <WorkView />
+          <WorkView language={language} />
         )}
         
         {activeView === 'contact' && (
-          <ContactForm />
+          <ContactForm language={language} />
         )}
       </main>
 
