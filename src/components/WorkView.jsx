@@ -6,66 +6,49 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 export default function WorkView() {
   const projects = [
     {
-      id: "01",
-      name: "Expense Tracker",
-      tagline: "Personal Finance Management Platform",
-      desc: "A personal finance management platform designed to help users track expenses, manage accounts, categorize transactions, and monitor their financial activity through a secure and scalable backend architecture.",
-      technologies: [
-        "Java",
-        "Spring Boot",
-        "PostgreSQL",
-        "JPA/Hibernate",
-        "JWT",
-        "REST APIs",
-        "Maven",
-        "Git",
-      ],
+      id: '01',
+      name: 'Expense Tracker',
+      tagline: 'Personal Finance Management Platform',
+      desc: 'A personal finance management platform designed to help users track expenses, manage accounts, categorize transactions, and monitor their financial activity through a secure and scalable backend architecture.',
+      technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'JPA/Hibernate', 'JWT', 'REST APIs', 'Maven', 'Git'],
       features: [
-        "User authentication and authorization with JWT",
-        "Account and balance management",
-        "Expense and income tracking",
-        "Transaction categorization and tagging",
-        "Ownership-based access control",
-        "RESTful API architecture",
-        "Data validation and exception handling",
-        "Relational database integration",
+        'User authentication and authorization with JWT',
+        'Account and balance management',
+        'Expense and income tracking',
+        'Transaction categorization and tagging',
+        'Ownership-based access control',
+        'RESTful API architecture',
+        'Data validation and exception handling',
+        'Relational database integration'
       ],
-      skills:
-        "Backend Development, API Design, Database Modeling, Authentication & Security, Problem Solving, Software Architecture.",
-      linkText: "Source Code",
-      linkUrl: "https://github.com/ValGP/Expense-Tracker",
+      skills: 'Backend Development, API Design, Database Modeling, Authentication & Security, Problem Solving, Software Architecture.',
+      linkText: 'Source Code',
+      linkUrl: 'https://github.com/ValGP/Expense-Tracker',
+      liveUrl: 'https://expense-tracker-frontend-iota-nine.vercel.app',
       img: expenseTrackerImg,
     },
     {
-      id: "02",
-      name: "Appointment Management System",
-      tagline: "Business Appointment Scheduling Platform",
-      desc: "A scheduling platform designed for service-based businesses to manage appointments, professionals, services, availability, and customer bookings through a centralized system.",
-      technologies: [
-        "Java",
-        "Spring Boot",
-        "PostgreSQL",
-        "JPA/Hibernate",
-        "REST APIs",
-        "React",
-        "Git",
-      ],
+      id: '02',
+      name: 'Appointment Management System',
+      tagline: 'Business Appointment Scheduling Platform',
+      desc: 'A scheduling platform designed for service-based businesses to manage appointments, professionals, services, availability, and customer bookings through a centralized system.',
+      technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'JPA/Hibernate', 'REST APIs', 'React', 'Git'],
       features: [
-        "Appointment booking and management",
-        "Service and professional administration",
-        "Availability and schedule configuration",
-        "Business hours management",
-        "Appointment status tracking",
-        "Role-based access control",
-        "Conflict prevention and booking validation",
-        "Administrative dashboard",
+        'Appointment booking and management',
+        'Service and professional administration',
+        'Availability and schedule configuration',
+        'Business hours management',
+        'Appointment status tracking',
+        'Role-based access control',
+        'Conflict prevention and booking validation',
+        'Administrative dashboard'
       ],
-      skills:
-        "Business Process Modeling, Backend Development, System Design, Database Design, API Development, Problem Solving.",
-      linkText: "Source Code",
-      linkUrl: "https://github.com/ValGP/AppointmentMS-Template",
+      skills: 'Business Process Modeling, Backend Development, System Design, Database Design, API Development, Problem Solving.',
+      linkText: 'Source Code',
+      linkUrl: 'https://github.com/ValGP/AppointmentMS-Template',
+      liveUrl: 'https://bibe-estetica-prueba-front.vercel.app/',
       img: appointmentSystemImg,
-    },
+    }
   ];
 
   return (
@@ -85,7 +68,7 @@ export default function WorkView() {
 
       {/* Projects List */}
       <div className="projects-list">
-        {projects.map((project) => (
+        {[...projects].reverse().map((project) => (
           <div key={project.id} className="project-item">
             <div className="project-info-col">
               <span className="project-number-title">
@@ -126,7 +109,7 @@ export default function WorkView() {
                 </div>
               </div>
 
-              <div className="project-link-wrapper">
+              <div className="project-links-container">
                 <a
                   href={project.linkUrl}
                   target="_blank"
@@ -136,6 +119,17 @@ export default function WorkView() {
                   {project.linkText}{" "}
                   <ArrowUpRight size={16} className="inline-icon" />
                 </a>
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link btn-underline"
+                  >
+                    Live Project{" "}
+                    <ArrowUpRight size={16} className="inline-icon" />
+                  </a>
+                )}
               </div>
             </div>
 
@@ -326,10 +320,12 @@ export default function WorkView() {
           color: var(--text-primary);
         }
 
-        .project-link-wrapper {
-          font-size: 14px;
-          font-weight: 500;
-          margin-top: 10px;
+        .project-links-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          margin-top: 15px;
         }
 
         .project-link {
