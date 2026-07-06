@@ -94,7 +94,7 @@ export default function AboutView({ setActiveView }) {
           >
             valgpintos@gmail.com
           </a>
-          <a href="#resume" className="resume-link">
+          <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">
             View Resume
           </a>
         </div>

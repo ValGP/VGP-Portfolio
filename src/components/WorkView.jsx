@@ -1,6 +1,7 @@
 import React from "react";
 import expenseTrackerImg from "../assets/project_expense_tracker.png";
 import appointmentSystemImg from "../assets/project_appointment_system.png";
+import projectWipImg from "../assets/project_wip.png";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 export default function WorkView() {
@@ -48,6 +49,27 @@ export default function WorkView() {
       linkUrl: 'https://github.com/ValGP/AppointmentMS-Template',
       liveUrl: 'https://bibe-estetica-prueba-front.vercel.app/',
       img: appointmentSystemImg,
+    },
+    {
+      id: '03',
+      name: 'Appointment Booking SaaS',
+      tagline: 'Multi-tenant Business Scheduling & Operations Platform',
+      desc: 'A scalable multi-tenant SaaS scheduling platform designed to allow independent service-based businesses (tenants) to manage bookings, customize service catalogs, and monitor scheduling metrics under a subscription-based model with secure, isolated tenant database architecture.',
+      technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'JPA/Hibernate', 'JWT', 'REST APIs', 'React', 'TypeScript', 'Docker'],
+      features: [
+        'Multi-tenant database isolation: Secure data segregation per business (tenant).',
+        'Centralized customer booking wizard: Fast, multi-step scheduling flow with real-time slot availability checking (focused purely on reservation logistics).',
+        'Flexible configuration per tenant: Customize work schedules, professional rosters, and service catalogs.',
+        'Role-based access control: Granular access management for Admins (business owners), Professionals, and Customers.',
+        'Conflict resolution algorithms: Prevents double-booking and validates overlapping slots against active business hours and custom agenda blocks.',
+        'SaaS subscription management: Tier-based enforcement of tenant-specific operational limits (e.g., maximum active professionals or bookings).',
+        'Operational metrics dashboard: Live tracking of tenant booking volumes, occupancy rates, and peak scheduling hours.'
+      ],
+      skills: 'SaaS Architecture, Database Multi-tenancy, Full-Stack Development, Secure API Design, Conflict Resolution Algorithms, Relational Database Design.',
+      linkText: 'Source Code',
+      linkUrl: 'https://github.com/ValGP',
+      status: 'wip',
+      img: projectWipImg,
     }
   ];
 
@@ -73,6 +95,9 @@ export default function WorkView() {
             <div className="project-info-col">
               <span className="project-number-title">
                 {project.id} / {project.name.toUpperCase()}
+                {project.status === 'wip' && (
+                  <span className="wip-badge">Currently Building</span>
+                )}
               </span>
 
               <h2 className="project-tagline">{project.tagline}</h2>
@@ -110,25 +135,33 @@ export default function WorkView() {
               </div>
 
               <div className="project-links-container">
-                <a
-                  href={project.linkUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link btn-underline"
-                >
-                  {project.linkText}{" "}
-                  <ArrowUpRight size={16} className="inline-icon" />
-                </a>
-                {project.liveUrl && (
+                {project.linkUrl && (
                   <a
-                    href={project.liveUrl}
+                    href={project.linkUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-link btn-underline"
                   >
-                    Live Project{" "}
+                    {project.linkText}{" "}
                     <ArrowUpRight size={16} className="inline-icon" />
                   </a>
+                )}
+                {project.status === 'wip' ? (
+                  <div className="wip-status">
+                    <span className="pulse-dot"></span> Active Development
+                  </div>
+                ) : (
+                  project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link btn-underline"
+                    >
+                      Live Project{" "}
+                      <ArrowUpRight size={16} className="inline-icon" />
+                    </a>
+                  )
                 )}
               </div>
             </div>
@@ -326,6 +359,53 @@ export default function WorkView() {
           align-items: flex-start;
           gap: 10px;
           margin-top: 15px;
+        }
+
+        .wip-badge {
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          border: 1px solid var(--text-primary);
+          padding: 2px 6px;
+          margin-left: 12px;
+          font-weight: 600;
+          border-radius: 2px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        .wip-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 13px;
+          font-weight: 500;
+          color: var(--text-secondary);
+          margin-top: 5px;
+        }
+
+        .pulse-dot {
+          width: 8px;
+          height: 8px;
+          background-color: #10b981;
+          border-radius: 50%;
+          display: inline-block;
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          }
+          70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+          }
+          100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+          }
         }
 
         .project-link {
