@@ -78,7 +78,7 @@ export const translations = {
           ],
           skills: 'SaaS Architecture, Database Multi-tenancy, Full-Stack Development, Secure API Design, Conflict Resolution Algorithms, Relational Database Design.',
           linkText: 'Source Code',
-          linkUrl: 'https://github.com/ValGP',
+          linkUrl: 'https://github.com/ValGP/Saas-Appointment-Platform',
           status: 'wip'
         }
       ]
@@ -206,7 +206,7 @@ export const translations = {
           ],
           skills: 'Arquitectura SaaS, Multi-tenancy en Bases de Datos, Desarrollo Full-Stack, Diseño de APIs Seguras, Algoritmos de Resolución de Conflictos, Diseño de Bases de Datos Relacionales.',
           linkText: 'Código Fuente',
-          linkUrl: 'https://github.com/ValGP',
+          linkUrl: 'https://github.com/ValGP/Saas-Appointment-Platform',
           status: 'wip'
         }
       ]
