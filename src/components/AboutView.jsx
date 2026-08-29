@@ -1,5 +1,5 @@
 import React from "react";
-import heroImg from "../assets/pfp_hero.JPEG";
+import heroImg from "../assets/pfp_about.jpg";
 import { ArrowRight } from "lucide-react";
 import { translations } from "../data/translations";
 
